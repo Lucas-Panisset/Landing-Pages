@@ -1,7 +1,0 @@
-
-format_values("C:/Users/Polozi/Desktop/aa.txt")
-
-formatted_values = format_values('C:/Users/Polozi/Desktop/aa.txt')
-for values in formatted_values:
-    print('\n'.join(values))
-    print()
