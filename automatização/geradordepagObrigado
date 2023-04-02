@@ -1,0 +1,62 @@
+from multiprocessing.connection import wait
+from time import sleep
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+
+import sys, asyncio, pyautogui
+
+browser = webdriver.Chrome()
+browser.get('https://app.rockfunnels.com/')
+wait = WebDriverWait(browser,10)
+def Login():
+    login = wait.until(EC.presence_of_element_located((By.ID, 'signInName')))
+    passw = browser.find_element(By.ID, 'password')
+
+    login.send_keys('polozi.marketing@gmail.com')
+    passw.send_keys('yg6iPGd7')
+
+
+    pyautogui.press('Enter')
+
+    
+def GetIntoPage():
+    enterPage = wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div/div[3]/section[2]/section/div/div[1]/div[1]/div[2]/div[2]/ul/li/a')))
+    enterPage.click()
+
+
+
+
+def copiar():
+    wait = WebDriverWait(browser,10)
+    count = 0
+
+    try:
+        while (count < 11):
+            copy = wait.until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div[3]/header/section/div/div[2]/div[1]/div/div/div/div[1]/div/div/div[2]/div[1]')))
+            copy.click()
+            paste = wait.until(EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'Duplicar')]")))
+            paste.click()
+            count = count + 1
+            sleep(5)
+    except:
+        while (count < 10):
+            paste = wait.until(EC.presence_of_element_located((By.XPATH, "//*[contains(text(), 'Duplicar')]")))
+            paste.click()
+            count = count + 1
+            sleep(5)
+
+
+
+Login()
+sleep(10)
+GetIntoPage()
+#copiar()
+Organize()
+
+
+
+
+sleep(999)
